@@ -2,7 +2,7 @@ from typing import Optional, Any
 
 import torch
 
-from surya.settings import settings
+from mypagelayout.settings import settings
 
 
 class ModelLoader:

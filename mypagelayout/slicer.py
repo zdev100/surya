@@ -2,7 +2,7 @@ import math
 from typing import List, Tuple
 from PIL import Image
 
-from surya.layout.schema import LayoutResult
+from .schema import LayoutResult
 
 SLICES_TYPE = Tuple[List[Image.Image], List[Tuple[int, int, int]]]
 

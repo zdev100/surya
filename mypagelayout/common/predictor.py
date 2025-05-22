@@ -2,8 +2,8 @@ from typing import Optional
 import torch
 import torch.nn.functional as F
 
-from surya.common.load import ModelLoader
-from surya.settings import settings
+from mypagelayout.common.load import ModelLoader
+from mypagelayout.settings import settings
 
 
 class BasePredictor:

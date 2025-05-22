@@ -2,7 +2,7 @@ from typing import Optional, Dict, List
 
 from pydantic import BaseModel
 
-from surya.common.polygon import PolygonBox
+from mypagelayout.common.polygon import PolygonBox
 
 
 class LayoutBox(PolygonBox):

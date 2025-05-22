@@ -5,14 +5,14 @@ import torch
 from PIL import Image
 from tqdm import tqdm
 
-from surya.common.predictor import BasePredictor
-from surya.layout.loader import LayoutModelLoader
-from surya.layout.model.config import ID_TO_LABEL
-from surya.layout.slicer import ImageSlicer
-from surya.layout.util import prediction_to_polygon
-from surya.common.util import clean_boxes, mark_step
-from surya.layout.schema import LayoutBox, LayoutResult
-from surya.settings import settings
+from mypagelayout.common.predictor import BasePredictor
+from .loader import LayoutModelLoader
+from .model.config import ID_TO_LABEL
+from .slicer import ImageSlicer
+from .util import prediction_to_polygon
+from mypagelayout.common.util import clean_boxes, mark_step
+from .schema import LayoutBox, LayoutResult
+from mypagelayout.settings import settings
 
 
 class LayoutPredictor(BasePredictor):

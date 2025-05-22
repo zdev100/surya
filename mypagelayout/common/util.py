@@ -1,8 +1,8 @@
 import copy
 from typing import List
 
-from surya.common.polygon import PolygonBox
-from surya.settings import settings
+from mypagelayout.common.polygon import PolygonBox
+from mypagelayout.settings import settings
 
 
 def clean_boxes(boxes: List[PolygonBox]) -> List[PolygonBox]:

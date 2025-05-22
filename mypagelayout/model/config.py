@@ -4,8 +4,8 @@ import torch
 from transformers import PretrainedConfig
 from transformers.modeling_outputs import CausalLMOutput
 from transformers.utils import ModelOutput
-from surya.common.s3 import S3DownloaderMixin
-from surya.settings import settings
+from mypagelayout.common.s3 import S3DownloaderMixin
+from mypagelayout.settings import settings
 
 SPECIAL_TOKENS = 3
 QUERY_TOKENS = 192

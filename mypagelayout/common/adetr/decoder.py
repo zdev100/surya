@@ -11,7 +11,7 @@ from transformers.modeling_attn_mask_utils import AttentionMaskConverter
 from transformers.modeling_outputs import BaseModelOutputWithNoAttention
 from transformers.pytorch_utils import ALL_LAYERNORM_LAYERS
 
-from surya.common.util import mark_step
+from mypagelayout.common.util import mark_step
 
 _MAX_SQRT_GRADIENT = 1000.0
 

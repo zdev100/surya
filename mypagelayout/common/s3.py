@@ -9,8 +9,8 @@ from pathlib import Path
 import requests
 from tqdm import tqdm
 
-from surya.logging import get_logger
-from surya.settings import settings
+from mypagelayout.logging import get_logger
+from mypagelayout.settings import settings
 
 logger = get_logger()
 

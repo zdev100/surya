@@ -5,10 +5,10 @@ import torch.utils.checkpoint
 from torch import nn
 from torch.nn import functional as F
 
-from surya.common.adetr.decoder import SuryaADETRDecoderModel, SuryaADETRDecoderPreTrainedModel
-from surya.layout.model.config import LayoutModelOutput
+from mypagelayout.common.adetr.decoder import SuryaADETRDecoderModel, SuryaADETRDecoderPreTrainedModel
+from .config import LayoutModelOutput
 from transformers.modeling_outputs import CausalLMOutput
-from surya.settings import settings
+from mypagelayout.settings import settings
 
 
 class BboxEmbedding(nn.Module):

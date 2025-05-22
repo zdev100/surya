@@ -2,16 +2,16 @@ from typing import Optional
 
 import torch
 
-from surya.common.donut.processor import SuryaEncoderImageProcessor
-from surya.common.load import ModelLoader
-from surya.layout.model.config import (
+from mypagelayout.common.donut.processor import SuryaEncoderImageProcessor
+from mypagelayout.common.load import ModelLoader
+from .model.config import (
     SuryaLayoutConfig,
     SuryaLayoutDecoderConfig,
     DonutSwinLayoutConfig,
 )
-from surya.layout.model.encoderdecoder import SuryaLayoutModel
-from surya.logging import get_logger
-from surya.settings import settings
+from .model.encoderdecoder import SuryaLayoutModel
+from mypagelayout.logging import get_logger
+from mypagelayout.settings import settings
 
 logger = get_logger()
 
