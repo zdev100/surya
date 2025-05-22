@@ -6,13 +6,12 @@
 // Constructor
 ONNXInferenceManager::ONNXInferenceManager(
     const std::string& layout_model_path,
-    const std::string& recognition_model_path,
     bool use_cuda,
     int cuda_device_id,
-    bool verbose) // Added verbose flag
-    : env_(verbose ? ORT_LOGGING_LEVEL_INFO : ORT_LOGGING_LEVEL_WARNING, "SuryaCppAppLog"), verbose_(verbose) {
+    bool verbose) 
+    : env_(verbose ? ORT_LOGGING_LEVEL_INFO : ORT_LOGGING_LEVEL_WARNING, "LayoutAppLog"), verbose_(verbose) {
 
-    if (verbose_) std::cout << "ONNXInferenceManager: Initializing with verbose mode." << std::endl;
+    if (verbose_) std::cout << "ONNXInferenceManager: Initializing with verbose mode for LayoutApp." << std::endl;
     initializeSessionOptions(use_cuda, cuda_device_id);
 
     // Load layout model
@@ -29,24 +28,10 @@ ONNXInferenceManager::ONNXInferenceManager(
         else std::cout << "Layout model loaded successfully from: " << layout_model_path << std::endl;
     } catch (const Ort::Exception& e) {
         std::cerr << "ONNXInferenceManager Error: Failed to load layout model (" << layout_model_path << "): " << e.what() << std::endl;
-        throw; // Re-throw to signal failure to constructor caller
+        throw; 
     }
 
-    // Load recognition model
-    if (verbose_) std::cout << "ONNXInferenceManager: Loading recognition model from " << recognition_model_path << std::endl;
-    try {
-        #ifdef _WIN32
-        std::wstring recognition_model_path_w = std::wstring(recognition_model_path.begin(), recognition_model_path.end());
-        recognition_session_ = std::make_unique<Ort::Session>(env_, recognition_model_path_w.c_str(), session_options_);
-        #else
-        recognition_session_ = std::make_unique<Ort::Session>(env_, recognition_model_path.c_str(), session_options_);
-        #endif
-        if (verbose_) std::cout << "ONNXInferenceManager: Recognition model loaded successfully." << std::endl;
-        else std::cout << "Recognition model loaded successfully from: " << recognition_model_path << std::endl;
-    } catch (const Ort::Exception& e) {
-        std::cerr << "ONNXInferenceManager Error: Failed to load recognition model (" << recognition_model_path << "): " << e.what() << std::endl;
-        throw; // Re-throw
-    }
+    // Recognition model loading removed
 }
 
 ONNXInferenceManager::~ONNXInferenceManager() {
@@ -93,12 +78,7 @@ Ort::Session& ONNXInferenceManager::getLayoutSession() {
     return *layout_session_;
 }
 
-Ort::Session& ONNXInferenceManager::getRecognitionSession() {
-    if (!recognition_session_) {
-        throw std::runtime_error("Recognition session is not initialized.");
-    }
-    return *recognition_session_;
-}
+// getRecognitionSession() removed
 
 Ort::AllocatorWithDefaultOptions& ONNXInferenceManager::getAllocator() {
     return allocator_;

@@ -22,7 +22,6 @@ public:
      * @param cuda_device_id The ID of the CUDA device to use.
      */
     ONNXInferenceManager(const std::string& layout_model_path,
-                         const std::string& recognition_model_path,
                          bool use_cuda = false, 
                          int cuda_device_id = 0,
                          bool verbose = false);
@@ -35,11 +34,7 @@ public:
      */
     Ort::Session& getLayoutSession();
 
-    /**
-     * @brief Gets a reference to the text recognition session.
-     * @return Ort::Session& reference.
-     */
-    Ort::Session& getRecognitionSession();
+    // Removed getRecognitionSession()
 
     /**
      * @brief Gets a reference to the allocator.
@@ -77,7 +72,7 @@ private:
     Ort::SessionOptions session_options_;
 
     std::unique_ptr<Ort::Session> layout_session_;
-    std::unique_ptr<Ort::Session> recognition_session_;
+    // Removed recognition_session_
 
     // Memory info for creating tensors (initialized once)
     Ort::AllocatorWithDefaultOptions allocator_; 

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(SuryaCppApp LANGUAGES CXX)
+project(LayoutApp LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
@@ -45,16 +45,16 @@ message(STATUS "Attempting to use nlohmann/json. Ensure it is available in the i
 
 
 # --- Executable ---
-add_executable(SuryaCppApp main.cpp
+add_executable(LayoutApp main.cpp
     image_utils.cpp
     onnx_inference.cpp
     layout_parser.cpp
-    ocr_parser.cpp
+    # ocr_parser.cpp # Removed
     json_utils.cpp
     visualization_utils.cpp)
 
 # --- Include Directories ---
-target_include_directories(SuryaCppApp PRIVATE
+target_include_directories(LayoutApp PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR} # For our own headers
     # If nlohmann/json is in a subdirectory like 'lib/json/single_include/'
     # ${CMAKE_CURRENT_SOURCE_DIR}/lib/json/single_include 
@@ -65,20 +65,20 @@ target_include_directories(SuryaCppApp PRIVATE
 )
 
 # --- Link Libraries ---
-target_link_libraries(SuryaCppApp PRIVATE
+target_link_libraries(LayoutApp PRIVATE
     ${ONNXRuntime_LIBRARIES}
     ${OpenCV_LIBS}
 )
 
 # --- Windows Specific Settings (Optional but good practice) ---
 if(WIN32)
-    target_compile_definitions(SuryaCppApp PRIVATE NOMINMAX UNICODE _UNICODE)
+    target_compile_definitions(LayoutApp PRIVATE NOMINMAX UNICODE _UNICODE)
     # Add other Windows-specific settings if needed
 endif()
 
 # --- Output Directory (Optional) ---
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
-message(STATUS "CMake configuration finished. Executable will be SuryaCppApp.")
+message(STATUS "CMake configuration finished. Executable will be LayoutApp.")
 message(STATUS "To build, navigate to your build directory and run 'cmake --build .'")
-message(STATUS "Ensure ONNX model files are placed where the application expects them at runtime.")
+message(STATUS "Ensure ONNX model file is placed where the application expects it at runtime.")
